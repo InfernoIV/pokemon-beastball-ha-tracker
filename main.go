@@ -18,11 +18,8 @@ func main() {
 		command := input[0]
 		//get the arguments
 		arguments := input[1:]
-		
-		//print the split arguments
-		fmt.Println("Command: ", command)
-		fmt.Println("Argument(s): ", arguments)	
-
+		//process the commands
+		process_input(command, arguments)
 	}
 	if err := scanner.Err(); err != nil {
 		fmt.Fprintln(os.Stderr, "reading standard input:", err)
@@ -46,3 +43,36 @@ func clean_input(text string) []string  {
 	return split_text
 }
 
+
+/*
+
+*/
+func process_input(command, arguments) {
+	//according to the command
+	switch command {
+		//we want to search the pokemon
+		case pokemon: 
+			//in case asking for commands
+			fmt.Println("Your pokemon is: ", arguments)
+
+		case help:
+			if arguments.length == 0 {
+				fmt.Println("No arguments provided")
+			} else {
+				//only get the first arguement
+				argument := arguments[0]
+				//according to the argument
+				switch argument {
+					//just print for now
+					default:
+						fmt.Println("Argument: ", argument)
+				}
+			}
+			
+		default:
+			//just print the information
+			fmt.Println("Command not found!")
+			fmt.Println("Command: ", command)
+			fmt.Println("Argument(s): ", arguments)	)
+	}
+}
