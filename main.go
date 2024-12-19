@@ -9,6 +9,8 @@ import (
 
 
 func main() {
+	//incidate the program has started
+	fmt.Println("Pokemon CMD, please enter your command")
 	//get console arguments
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
@@ -47,16 +49,16 @@ func clean_input(text string) []string  {
 /*
 
 */
-func process_input(command, arguments) {
+func process_input(command string, arguments []string) {
 	//according to the command
 	switch command {
 		//we want to search the pokemon
-		case pokemon: 
+		case "pokemon": 
 			//in case asking for commands
 			fmt.Println("Your pokemon is: ", arguments)
 
-		case help:
-			if arguments.length == 0 {
+		case "help":
+			if len(arguments) == 0 {
 				fmt.Println("No arguments provided")
 			} else {
 				//only get the first arguement
@@ -68,11 +70,16 @@ func process_input(command, arguments) {
 						fmt.Println("Argument: ", argument)
 				}
 			}
-			
+
+		case "exit":
+			//acknowledge command
+			fmt.Println("Exiting script...")
+			//exit program
+			os.Exit(0)
 		default:
 			//just print the information
 			fmt.Println("Command not found!")
 			fmt.Println("Command: ", command)
-			fmt.Println("Argument(s): ", arguments)	)
+			fmt.Println("Argument(s): ", arguments)
 	}
 }
